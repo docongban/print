@@ -11,25 +11,9 @@ let typeValue
 let oddValue
 let evenValue
 
-// start.addEventListener("change",(event) => {
-//     let startvalue
-//     startvalue = event.target.value
-    
-// });
-
-// end.addEventListener("change",(event) => {
-//     endValue = event.target.value
-// });
-
-// type.addEventListener('change', (event) => {
-//     // const result = document.querySelector('.result');
-//     // result.textContent = `You like ${event.target.value}`;
-//     typeValue = event.target.value
-// });
 btn.addEventListener('click', (event) => {
-    even.innerText = "Trang chẵn: "
-    odd.innerText = "Trang lẻ: "
-
+    evenValue = ""
+    oddValue = ""
     
     startvalue = start.value
     endValue = end.value
@@ -37,32 +21,34 @@ btn.addEventListener('click', (event) => {
     
     if(typeValue == 1){
         for(let i = parseInt(startvalue); i <= parseInt(endValue); i++) {
-            // if(typeValue === 1) {
-            //     odd.innerText = i+","
-            // }else if (typeValue === 2) {
-            //     even.in
-            // }
             if(i%2 == 0) {
-                even.innerText += i+","
+                evenValue += i+","
             }else{
-                odd.innerText += i+","
+                oddValue += i+","
             }
         }
     }else if(typeValue == 2){
         for(let i = parseInt(endValue); i >= parseInt(startvalue); i--) {
-            // if(typeValue === 1) {
-            //     odd.innerText = i+","
-            // }else if (typeValue === 2) {
-            //     even.in
-            // }
             if(i%2 == 0) {
-                even.innerText += i+","
+                evenValue += i+","
             }else{
-                odd.innerText += i+","
+                oddValue += i+","
             }
         }
     }
+    even.innerHTML = `<p class="title-reslut">Trang chẵn: <span id="copy-even">Copy</span></p> ${evenValue.slice(0, -1).replace("undefined","")}`
+    odd.innerHTML = `<p class="title-reslut">Trang lẻ: <span id="copy-odd">Copy</span></p> ${oddValue.slice(0, -1).replace("undefined","")}`
+
+    let copyEven = document.getElementById("copy-even")
+    let copyOdd = document.getElementById("copy-odd")
+    copyEven.addEventListener('click', (event) => {
+        navigator.clipboard.writeText(evenValue.slice(0, -1).replace("undefined",""))
+        // alert("Đã copy: "+evenValue.slice(0, -1).replace("undefined",""))
+    })
     
-    
+    copyOdd.addEventListener('click', (event) => {
+        navigator.clipboard.writeText(oddValue.slice(0, -1).replace("undefined",""))
+        // alert("Đã copy: "+oddValue.slice(0, -1).replace("undefined",""))
+    })
 });
 

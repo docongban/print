@@ -1,0 +1,21 @@
+#odd,#even{
+    font-size: 20px;
+}
+.title-reslut{
+    font-weight: 600;
+    font-size: 20px;
+    margin: 0;
+    display: flex;
+}
+#copy-even,#copy-odd{
+    text-decoration: underline;
+    color: blue;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.copy-right{
+    position: fixed;
+    bottom: 0;
+    right: 20px;
+    opacity: .5;
+}
